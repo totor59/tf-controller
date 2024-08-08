@@ -6,16 +6,11 @@ ARG TARGETARCH=amd64
 # Switch to root to have permissions for operations
 USER root
 
-RUN wget -O /tmp/curl.tar.gz https://curl.se/download/curl-7.79.1.tar.gz && \
-    tar -xzvf /tmp/curl.tar.gz -C /tmp && \
-    cd /tmp/curl-7.79.1 && \
-    ./configure --prefix=/usr/local && \
-    make && \
-    make install && \
-    rm -rf /tmp/curl*
+RUN wget https://github.com/moparisthebest/static-curl/releases/download/v8.7.1/curl-amd64 && \
+    chmod +x ./curl-amd64
 
 # Utiliser curl pour télécharger et installer OpenTofu
-RUN curl --proto '=https' --tlsv1.2 -fsSL https://get.opentofu.org/install-opentofu.sh -o install-opentofu.sh && \
+RUN ./curl-amd64 --proto '=https' --tlsv1.2 -fsSL https://get.opentofu.org/install-opentofu.sh -o install-opentofu.sh && \
     chmod +x install-opentofu.sh && \
     ./install-opentofu.sh --install-method standalone && \
     rm -f install-opentofu.sh && \
