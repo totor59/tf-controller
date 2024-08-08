@@ -15,7 +15,7 @@ RUN ./curl-amd64 --proto '=https' --tlsv1.2 -fsSL https://get.opentofu.org/insta
     ./install-opentofu.sh --install-method standalone && \
     rm -f install-opentofu.sh && \
     ls -la /opt/opentofu && \
-    ln -fs /opt/opentofu/opentofu /usr/local/bin/terraform
+    ln -fs /usr/local/bin/tofu /usr/local/bin/terraform
 
 # Switch back to the non-root user after operations
 USER 65532:65532
