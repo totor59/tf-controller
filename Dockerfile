@@ -6,7 +6,7 @@ ARG TARGETARCH=amd64
 # Switch to root to have permissions for operations
 USER root
 
-RUN wget --secure-protocol=TLSv1_2 --https-only https://get.opentofu.org/install-opentofu.sh -O install-opentofu.sh && \
+RUN wget --https-only https://get.opentofu.org/install-opentofu.sh -O install-opentofu.sh && \
     # Alternatively: wget --secure-protocol=TLSv1_2 --https-only https://get.opentofu.org/install-opentofu.sh -O install-opentofu.sh
     # Grant execution permissions:
     chmod +x install-opentofu.sh && \
